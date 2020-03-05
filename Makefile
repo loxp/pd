@@ -105,7 +105,7 @@ check-all: static lint tidy
 
 retool-setup: export GO111MODULE=on
 retool-setup:
-	cat tools.go | grep '_' | sed  's/"//g' | awk '{print $2}' | xargs go install
+	grep '_' tools.go | sed 's/"//g' | awk '{print $$2}' | xargs go install
 
 check: retool-setup check-all check-plugin
 
